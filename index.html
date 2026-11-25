@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AgriHorizon accompagne vos projets agricoles et environnementaux au Sénégal. Cultivons ensemble un avenir vert.">
+  <meta name="theme-color" content="#103d27">
+  <title>AgriHorizon — Cultivons ensemble un avenir vert</title>
+  <style>
+    :root {
+      --green: #145b32;
+      --deep: #0b351f;
+      --green-2: #237b3d;
+      --lime: #a7d94b;
+      --gold: #e8bd45;
+      --ink: #17251b;
+      --muted: #657268;
+      --cream: #f6f8f2;
+      --white: #fff;
+      --line: #e5ebdf;
+      --shadow: 0 16px 45px rgba(20, 65, 36, .09);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .container { width: min(1160px, calc(100% - 44px)); margin-inline: auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid rgba(20,91,50,.10);
+      backdrop-filter: blur(14px);
+    }
+    .header-inner {
+      min-height: 82px; display: flex; align-items: center;
+      justify-content: space-between; gap: 28px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .brand-mark {
+      width: 43px; height: 43px; display: grid; place-items: center;
+      color: var(--green); background: #edf6e8; border-radius: 14px;
+    }
+    .brand-mark svg { width: 31px; height: 31px; }
+    .brand-name { font-size: 25px; font-weight: 850; letter-spacing: -1.3px; line-height: 1.05; color: var(--green); }
+    .brand-name span { color: var(--gold); }
+    .brand-tagline { display: block; margin-top: 4px; color: #647166; font-size: 10px; font-weight: 650; letter-spacing: .15px; }
+    .nav { display: flex; align-items: center; gap: 27px; }
+    .nav a { text-decoration: none; font-size: 13px; font-weight: 700; color: #253329; transition: color .2s; }
+    .nav a:hover, .nav a.active { color: var(--green-2); }
+    .header-cta, .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      border: 0; border-radius: 999px; padding: 13px 20px;
+      font: inherit; font-size: 13px; font-weight: 800; text-decoration: none;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    .header-cta { color: white; background: var(--green); white-space: nowrap; }
+    .header-cta:hover, .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(10,60,30,.18); }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: white; color: var(--green); border-radius: 12px; padding: 9px 12px; font-size: 20px; }
+    .hero {
+      position: relative; overflow: hidden; isolation: isolate;
+      color: white; background:
+        radial-gradient(ellipse at 78% 18%, rgba(91,166,57,.40), transparent 29%),
+        radial-gradient(ellipse at 90% 100%, rgba(167,217,75,.22), transparent 33%),
+        linear-gradient(115deg, #082f1b 0%, #10532b 58%, #1c7138 100%);
+    }
+    .hero::before, .hero::after {
+      content: ""; position: absolute; z-index: -1; border: 1px solid rgba(211,239,174,.20);
+      border-radius: 100% 0 100% 0; transform: rotate(-28deg);
+    }
+    .hero::before { width: 390px; height: 210px; right: 5%; top: 16%; box-shadow: 0 0 0 28px rgba(255,255,255,.025), 0 0 0 58px rgba(255,255,255,.02); }
+    .hero::after { width: 260px; height: 145px; right: 16%; bottom: 3%; transform: rotate(24deg); }
+    .hero-inner { min-height: 490px; display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 35px; padding-block: 76px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; border-radius: 999px;
+      padding: 7px 14px; color: #203b1c; background: var(--gold);
+      font-size: 11px; font-weight: 850; letter-spacing: .7px; text-transform: uppercase;
+    }
+    .hero h1 { max-width: 700px; margin: 20px 0 16px; font-size: clamp(42px, 6vw, 72px); line-height: 1.02; letter-spacing: -3.2px; }
+    .hero h1 span { color: var(--gold); }
+    .hero-copy { max-width: 570px; margin: 0; color: rgba(255,255,255,.83); font-size: 16px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 29px; }
+    .btn-gold { color: #17371e; background: var(--gold); }
+    .btn-glass { color: white; border: 1px solid rgba(255,255,255,.65); background: rgba(255,255,255,.06); }
+    .hero-note { justify-self: end; max-width: 340px; padding: 28px 24px; text-align: center; }
+    .hero-note .leaf-symbol { width: 74px; height: 74px; margin: 0 auto 15px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; color: var(--lime); background: rgba(255,255,255,.08); }
+    .hero-note svg { width: 38px; height: 38px; }
+    .hero-note p { margin: 0; font-family: Georgia, serif; font-size: clamp(23px, 3vw, 32px); font-style: italic; line-height: 1.35; }
+    .hero-note .gold-line { width: 105px; height: 3px; margin: 19px auto 0; border-radius: 4px; background: var(--gold); }
+    .section { padding: 84px 0; }
+    .section-heading { margin: 0 auto 38px; text-align: center; }
+    .kicker { color: var(--green-2); font-size: 11px; font-weight: 850; letter-spacing: 2px; text-transform: uppercase; }
+    .section-heading h2 { margin: 7px 0 8px; color: var(--deep); font-size: clamp(30px, 4vw, 42px); line-height: 1.15; letter-spacing: -1.4px; }
+    .section-heading p { max-width: 610px; margin: 0 auto; color: var(--muted); font-size: 14px; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .service-card {
+      min-height: 220px; padding: 27px 25px; border: 1px solid var(--line); border-radius: 18px;
+      background: white; box-shadow: 0 5px 20px rgba(23,65,34,.035);
+      transition: transform .22s, border-color .22s, box-shadow .22s;
+    }
+    .service-card:hover { transform: translateY(-6px); border-color: #b7d7a7; box-shadow: var(--shadow); }
+    .service-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 15px; color: var(--green); background: #edf6e8; }
+    .service-icon svg { width: 25px; height: 25px; }
+    .service-card .number { float: right; color: #c2d4bd; font-size: 12px; font-weight: 850; letter-spacing: 1px; }
+    .service-card h3 { margin: 17px 0 7px; color: var(--deep); font-size: 18px; letter-spacing: -.35px; }
+    .service-card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .about-section { padding: 12px 0 82px; }
+    .about-panel {
+      position: relative; overflow: hidden; display: grid; grid-template-columns: 1.2fr .8fr;
+      border-radius: 25px; background: var(--cream); border: 1px solid #e9efe4;
+    }
+    .about-copy { padding: 48px 48px 44px; }
+    .about-copy h2 { margin: 7px 0 15px; color: var(--deep); font-size: clamp(29px, 4vw, 40px); line-height: 1.12; letter-spacing: -1.3px; }
+    .about-copy p { max-width: 650px; margin: 0 0 12px; color: #56655a; font-size: 14px; }
+    .about-copy .btn { margin-top: 13px; color: white; background: var(--green); }
+    .values-panel { display: flex; flex-direction: column; justify-content: center; padding: 40px 34px; color: white; background: linear-gradient(145deg, #155a30, #0b351f); }
+    .values-panel h3 { margin: 0 0 22px; color: #f4d36e; font-size: 25px; text-align: center; }
+    .values-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .value-item { padding: 17px 10px; text-align: center; border: 1px solid rgba(255,255,255,.19); border-radius: 14px; background: rgba(255,255,255,.055); }
+    .value-item svg { width: 26px; height: 26px; color: var(--gold); display: block; margin: 0 auto 8px; }
+    .value-item span { font-size: 13px; font-weight: 750; }
+    .contact-section { padding: 0 0 78px; }
+    .contact-panel {
+      display: grid; grid-template-columns: 1.1fr .9fr; gap: 30px; align-items: center;
+      padding: 38px 42px; border: 1px solid #e4eedc; border-radius: 22px;
+      background: linear-gradient(110deg, #f0f8e9, #fbfcf8);
+    }
+    .contact-panel h2 { margin: 6px 0 8px; color: var(--deep); font-size: clamp(25px, 3vw, 34px); line-height: 1.15; }
+    .contact-panel p { margin: 0; color: var(--muted); font-size: 14px; }
+    .contact-details { display: flex; flex-wrap: wrap; gap: 13px 22px; margin-top: 20px; }
+    .contact-details a { display: inline-flex; align-items: center; gap: 8px; color: var(--green); font-size: 13px; font-weight: 800; text-decoration: none; }
+    .contact-details svg { width: 18px; height: 18px; }
+    .contact-actions { display: grid; gap: 11px; }
+    .contact-actions .btn { width: 100%; padding: 15px 18px; }
+    .btn-green { color: white; background: var(--green); }
+    .btn-outline { color: var(--green); border: 1px solid #9bb99d; background: transparent; }
+    .footer { color: rgba(255,255,255,.78); background: #082c19; }
+    .footer-main { display: flex; align-items: center; justify-content: space-between; gap: 25px; padding: 27px 0; }
+    .footer .brand-name { color: white; font-size: 22px; }
+    .footer .brand-tagline { color: rgba(255,255,255,.65); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 17px; }
+    .footer-links a { color: rgba(255,255,255,.8); font-size: 12px; font-weight: 650; text-decoration: none; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom { padding: 14px 0 20px; border-top: 1px solid rgba(255,255,255,.13); text-align: center; font-size: 11px; }
+    .footer-bottom strong { color: var(--gold); }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    @media (max-width: 900px) {
+      .nav { gap: 15px; }
+      .nav a { font-size: 12px; }
+      .hero-inner { grid-template-columns: 1fr .65fr; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-copy { padding: 38px 30px; }
+      .contact-panel { padding: 32px; }
+    }
+    @media (max-width: 700px) {
+      .container { width: min(100% - 32px, 560px); }
+      .header-inner { min-height: 72px; }
+      .brand-name { font-size: 22px; }
+      .menu-toggle { display: inline-flex; }
+      .header-cta { display: none; }
+      .nav {
+        display: none; position: absolute; top: 72px; left: 0; right: 0;
+        padding: 18px 24px 22px; background: white; border-bottom: 1px solid var(--line);
+        box-shadow: 0 15px 25px rgba(0,0,0,.07); flex-direction: column; align-items: stretch; gap: 0;
+      }
+      .nav.open { display: flex; }
+      .nav a { padding: 12px 0; border-bottom: 1px solid #f0f2ed; font-size: 14px; }
+      .hero-inner { min-height: auto; grid-template-columns: 1fr; gap: 20px; padding-block: 65px 50px; }
+      .hero h1 { letter-spacing: -2px; }
+      .hero-copy { font-size: 14px; }
+      .hero-note { justify-self: start; max-width: 100%; padding: 20px 0 0; text-align: left; }
+      .hero-note .leaf-symbol { display: none; }
+      .hero-note p { font-size: 22px; }
+      .hero-note .gold-line { margin: 12px 0 0; }
+      .section { padding: 65px 0; }
+      .services-grid { gap: 12px; }
+      .service-card { min-height: 205px; padding: 20px 17px; }
+      .about-section { padding: 0 0 62px; }
+      .about-panel { grid-template-columns: 1fr; }
+      .about-copy { padding: 32px 25px; }
+      .values-panel { padding: 30px 25px; }
+      .contact-section { padding-bottom: 60px; }
+      .contact-panel { grid-template-columns: 1fr; padding: 28px 23px; gap: 24px; }
+      .footer-main { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 430px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: auto; }
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .hero-actions .btn { width: 100%; }
+      .values-grid { gap: 9px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#accueil" aria-label="AgriHorizon, accueil">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none"><path d="M32.8 5.5C19 5.8 8.4 12.2 8.4 23.1c0 4.8 3.1 8.1 7.5 8.1 10.1 0 15.4-12.5 16.9-25.7Z" fill="currentColor"/><path d="M7 34c5.5-9.1 12.2-15 21.1-20.4" stroke="#A7D94B" stroke-width="2.2" stroke-linecap="round"/><path d="M7.4 13.1C3.8 19 4.1 25.2 9.2 29.4c2.2-6.1 1.6-11.5-1.8-16.3Z" fill="#75B947"/></svg>
+        </span>
+        <span><span class="brand-name">Agri<span>Horizon</span></span><span class="brand-tagline">Cultivons ensemble un avenir vert.</span></span>
+      </a>
+      <nav class="nav" id="main-nav" aria-label="Navigation principale">
+        <a href="#accueil" class="active">Accueil</a>
+        <a href="#apropos">À propos</a>
+        <a href="#services">Nos services</a>
+        <a href="#engagements">Nos engagements</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="header-cta" href="https://wa.me/221767700631" target="_blank" rel="noopener">WhatsApp <span aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div class="container hero-inner">
+        <div>
+          <span class="eyebrow">Agriculture · Innovation · Développement</span>
+          <h1>Agri<span>Horizon</span><br>Cultivons ensemble<br>un avenir vert.</h1>
+          <p class="hero-copy">AgriHorizon vous accompagne dans vos projets agricoles et environnementaux avec des solutions adaptées, durables et professionnelles.</p>
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="#services">Découvrir nos services <span aria-hidden="true">→</span></a>
+            <a class="btn btn-glass" href="#contact">Nous contacter</a>
+          </div>
+        </div>
+        <div class="hero-note">
+          <div class="leaf-symbol" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M33 5C19 5 8 12 8 24c0 5 3 8 8 8C26 32 31 19 33 5Z" stroke="currentColor" stroke-width="2.2"/><path d="M7 35c7-10 14-17 23-23" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          </div>
+          <p>« Ensemble cultivons aujourd'hui les récoltes de demain. »</p>
+          <div class="gold-line"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <span class="kicker">Notre expertise</span>
+          <h2>Nos services</h2>
+          <p>Des prestations pensées pour accompagner vos activités agricoles et valoriser durablement votre environnement.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <span class="number">01</span><div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 13C4 13 3 7 4 4c6 0 9 3 8 9Z"/><path d="M12 16c0-6 4-9 9-9 1 5-2 9-9 9Z"/></svg></div>
+            <h3>Cultures maraîchères</h3><p>Installation et suivi des cultures maraîchères pour une production organisée et durable.</p>
+          </article>
+          <article class="service-card">
+            <span class="number">02</span><div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8"/><path d="M5 10a7 7 0 0 1 14 0c0 3-3 5-7 5s-7-2-7-5Z"/><path d="M8 21h8"/></svg></div>
+            <h3>Aménagement de vergers</h3><p>Création et aménagement de vergers adaptés aux besoins de chaque projet.</p>
+          </article>
+          <article class="service-card">
+            <span class="number">03</span><div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9"/><path d="M12 15c-4-1-6-4-6-8 4 0 6 2 6 6"/><path d="M12 12c1-4 4-6 8-6 0 4-3 7-8 8"/><path d="M5 21h14"/></svg></div>
+            <h3>Espaces verts</h3><p>Aménagement et valorisation des espaces verts pour un cadre de vie agréable.</p>
+          </article>
+          <article class="service-card">
+            <span class="number">04</span><div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 12 4-4 4 3 3-3 7 4"/><path d="m3 12 5 6 4-3 3 2 6-5"/><path d="m7 8 2-2 4 2 3-2 3 2"/></svg></div>
+            <h3>Conseil agricole</h3><p>Conseil et accompagnement des producteurs dans leurs activités agricoles.</p>
+          </article>
+          <article class="service-card">
+            <span class="number">05</span><div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+            <h3>Protection des cultures</h3><p>Conseils en fertilisation et protection phytosanitaire des cultures.</p>
+          </article>
+          <article class="service-card">
+            <span class="number">06</span><div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.7 2.9-.2-.1a1.7 1.7 0 0 0-1.8.2l-.2.1h-3.4l-.1-.2a1.7 1.7 0 0 0-1.6-1.1h-.2l-2.9-1.7.1-.2a1.7 1.7 0 0 0-.2-1.8l-.1-.2v-3.4l.2-.1a1.7 1.7 0 0 0 1.1-1.6v-.2l1.7-2.9.2.1a1.7 1.7 0 0 0 1.8-.2l.2-.1h3.4l.1.2a1.7 1.7 0 0 0 1.6 1.1h.2l2.9 1.7-.1.2a1.7 1.7 0 0 0 .2 1.8l.1.2v3.4Z"/></svg></div>
+            <h3>Suivi technique</h3><p>Suivi et assistance technique pour accompagner les différentes étapes de production.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" id="apropos">
+      <div class="container">
+        <div class="about-panel">
+          <div class="about-copy">
+            <span class="kicker">À propos de nous</span>
+            <h2>Bienvenue chez AgriHorizon</h2>
+            <p>AgriHorizon est une initiative dédiée au développement agricole et à la valorisation des espaces verts au Sénégal.</p>
+            <p>Notre ambition est d'accompagner les producteurs, les particuliers et les porteurs de projets grâce à des services agricoles adaptés à leurs besoins.</p>
+            <p>Nous croyons en une agriculture productive, responsable et tournée vers l'avenir.</p>
+            <a class="btn" href="#contact">Parlons de votre projet <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="values-panel" id="engagements">
+            <h3>Nos engagements</h3>
+            <div class="values-grid">
+              <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.4l6.1-.9L12 3Z"/></svg><span>Qualité</span></div>
+              <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3 12 4-4 4 3 3-3 7 4"/><path d="m3 12 5 6 4-3 3 2 6-5"/></svg><span>Partenariats</span></div>
+              <div class="value-item"><svg viewBox="0 
